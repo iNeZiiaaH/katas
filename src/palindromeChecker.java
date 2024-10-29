@@ -1,12 +1,16 @@
 public class palindromeChecker {
     public static boolean isPalindrome(String str) {
+        try {
+            String cleaned = str.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
 
-        String cleaned = str.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+            String reversed = new StringBuilder(cleaned).reverse().toString();
 
-        // Vérifie si la chaîne est la même à l'envers
-        String reversed = new StringBuilder(cleaned).reverse().toString();
+            return cleaned.equals(reversed);
+        } catch (Exception e) {
 
-        return cleaned.equals(reversed);
+            System.err.println("Une erreur s'est produite lors de la vérification du palindrome : " + e.getMessage());
+            return false;
+        }
     }
 
     public static void main(String[] args) {
